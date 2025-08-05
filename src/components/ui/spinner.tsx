@@ -7,7 +7,7 @@ interface SpinnerProps {
     type?: "loader" | "circle" | "pinwheel"
 }
 
-export function Spinner({ className, size = "md", type = "circle" }: SpinnerProps) {
+function Spinner({ className, size = "md", type = "circle" }: SpinnerProps) {
     const sizeClasses = {
         sm: "h-4 w-4",
         md: "h-6 w-6",
@@ -22,3 +22,5 @@ export function Spinner({ className, size = "md", type = "circle" }: SpinnerProp
         </>
     )
 }
+
+export { Spinner }
