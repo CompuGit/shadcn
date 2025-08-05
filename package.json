@@ -3,31 +3,21 @@
   "version": "1.0.0",
   "description": "Compugit's custom package containing all shadcn/ui components styled with Tailwind CSS.",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./styles": "./dist/styles.css",
-    "./components/*": {
-      "import": "./dist/components/*.mjs",
-      "require": "./dist/components/*.js",
-      "types": "./dist/components/*.d.ts"
-    }
-  },
+  "type": "module",
+  "files": ["dist", "README.md", "LICENSE"],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "type-check": "tsc --noEmit",
+    "build": "rollup -c",
+    "build:watch": "rollup -c -w",
+    "dev": "rollup -c -w",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "eslint src --ext .ts,.tsx",
-    "prepublishOnly": "npm run build"
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "prepare": "npm run build"
   },
   "keywords": [
     "react",
@@ -123,8 +113,6 @@
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "ts-jest": "^29.1.1",
-    "tsup": "^8.0.0",
     "typescript": "^5.2.2"
-  },
-  "type": "commonjs"
+  }
 }
