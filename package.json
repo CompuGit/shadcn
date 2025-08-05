@@ -1,6 +1,6 @@
 {
   "name": "@compugit/shadcn",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compugit's custom package containing all shadcn/ui components styled with Tailwind CSS.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
