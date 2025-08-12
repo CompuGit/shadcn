@@ -1,4 +1,5 @@
 //default shadcn components
+import './index.css'
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/ui/accordion.tsx';
 export {
     AlertDialog,

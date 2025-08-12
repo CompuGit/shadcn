@@ -2,6 +2,7 @@ import resolve from "@rollup/plugin-node-resolve"
 import commonjs from "@rollup/plugin-commonjs"
 import typescript from "@rollup/plugin-typescript"
 import peerDepsExternal from "rollup-plugin-peer-deps-external"
+import postcss from "rollup-plugin-postcss"
 import { dts } from "rollup-plugin-dts"
 import { readFileSync } from "fs"
 
@@ -33,6 +34,11 @@ export default [
       typescript({
         tsconfig: "./tsconfig.json",
         exclude: ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"],
+      }),
+      postcss({
+        extract: true, // This will output a CSS file to dist/
+        minimize: true,
+        sourceMap: true,
       }),
     ],
     external: ["react", "react-dom"],

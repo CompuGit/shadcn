@@ -6,5 +6,5 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["tsup.config.js"]
+  "include": ["rollup.config.js"]
 }
