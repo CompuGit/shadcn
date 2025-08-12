@@ -1,91 +1,61 @@
 # @compugit/shadcn
 
-A comprehensive package containing all shadcn/ui components, ready to use in your React projects.
+A comprehensive package containing all shadcn/ui components, ready to use in your React projects. It provides all useful files along with type declarations.
+
+## Prerequisites
+
+1. setup/create a new Vite-react project.
+2. [Get started with Tailwind CSS](https://tailwindcss.com/docs/installation).
+
 
 ## Installation
 
-\`\`\`bash
+```bash
+npm i tailwindcss @tailwindcss/vite tailwind-merge class-variance-authority clsx  lucide-react tw-animate-css
+```
+```bash
 npm install @compugit/shadcn
-# or
+```
+or
+```bash
 yarn add @compugit/shadcn
-# or
+```
+or
+```bash
 pnpm add @compugit/shadcn
-\`\`\`
+```
 
 ## Setup
 
-1. Install the package and its peer dependencies:
+1. Configure your `vite.config.js`:
 
-\`\`\`bash
-npm install @compugit/shadcn react react-dom tailwindcss
-\`\`\`
-
-2. Import the CSS in your main CSS file or `_app.tsx`:
-
-\`\`\`css
-@import '@compugit/shadcn/styles';
-\`\`\`
-
-3. Configure your `tailwind.config.js`:
-
-\`\`\`javascript
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@compugit/shadcn/dist/**/*.{js,mjs}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
+  ```javascript
+  export default defineConfig({
+    //add optimizeDeps to your existing config
+    optimizeDeps: {
+      include: ['shadcn-packaged/**/*.{js,jsx,ts,tsx}'],
     },
-  },
-  plugins: [require("tailwindcss-animate")],
-}
-\`\`\`
+  })
+  ```
+
+2. import index.css to your global.css to app root. note that this impot will defaultly apply tailwindcss to project. you just need to customize your theme in global.css
+
+  replace
+  ```css
+  @import "tailwindcss";
+  @import "tw-animate-css";
+  ```
+  with
+  ```css
+  /* "@compugit/shadcn/dist/index.css" includes `@import "tailwindcss"` */
+  @import "@compugit/shadcn/dist/index.css";
+  /* source detection, according to the actual path specified */
+  @source "../node_modules/@compugit/shadcn";
+  ```
 
 ## Usage
 
-\`\`\`tsx
+```tsx
 import { Button, Card, CardContent, CardHeader, CardTitle } from '@compugit/shadcn'
 
 function App() {
@@ -100,72 +70,35 @@ function App() {
     </Card>
   )
 }
-\`\`\`
+```
 
-## Available Components
+### Package dir-structure
 
-- Accordion
-- Alert
-- Alert Dialog
-- Aspect Ratio
-- Avatar
-- Badge
-- Breadcrumb
-- Button
-- Calendar
-- Card
-- Carousel
-- Chart
-- Checkbox
-- Collapsible
-- Command
-- Context Menu
-- Dialog
-- Drawer
-- Dropdown Menu
-- Hover Card
-- Input
-- Input OTP
-- Label
-- Menubar
-- Navigation Menu
-- Pagination
-- Popover
-- Progress
-- Radio Group
-- Resizable
-- Scroll Area
-- Select
-- Separator
-- Sheet
-- Sidebar
-- Skeleton
-- Slider
-- Switch
-- Table
-- Tabs
-- Textarea
-- Toast
-- Toggle
-- Toggle Group
-- Tooltip
+- @compugit/shadcn/dist/ui/*: components
+- @compugit/shadcn/dist/hooks/*: hooks
+- @compugit/shadcn/dist/lib/utils: utils
+
+### Available shadcn Components
+
+```
+Accordion, Alert, Alert Dialog, Aspect Ratio, Avatar, Badge, Breadcrumb, Button, Calendar, Card, Carousel, Chart, Checkbox, Collapsible, Command, Context Menu, Dialog, Drawer, Dropdown Menu, Hover Card, Input, Input OTP, Label, Menubar, Navigation Menu, Pagination, Popover, Progress, Radio Group, Resizable, Scroll Area, Select, Separator, Sheet, Sidebar, Skeleton, Slider, Switch, Table, Tabs, Textarea, Toast, Toggle, Toggle Group, Tooltip
+```
+
+### Compugit's Cutom Components
+
+```
+Spinner
+```
+
 
 ## Hooks
 
-- `useToast` - Toast notifications
 - `useIsMobile` - Mobile detection
 
-## Publishing
-
-To publish this package:
-
-1. Update the version in `package.json`
-2. Build the package: `npm run build`
-3. Publish: `npm publish`
 
 ## Development
 
-\`\`\`bash
+```bash
 # Install dependencies
 npm install
 
@@ -180,9 +113,8 @@ npm run type-check
 
 # Lint
 npm run lint
-\`\`\`
+```
 
 ## License
 
-MIT
-0
+MIT @Compugit
